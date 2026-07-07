@@ -50,8 +50,8 @@ By tracking AMCL's state through the particle cloud variance and weights, the CN
 ---
 
 ## Network Architecture & Methodology
-1. **Feature Extraction:** Standard 224x224x3 color image sequences [cite: 133, 154] [cite_start]are routed through a pre-trained **VGG16** network's fully connected (`fc1`) layer to derive a dense 4096-dimensional output vector[cite: 170].
-2. **Temporal Processing:** A sliding queue window of size 15 handles the historical steps, feeding stacked **LSTM layers** (structured with 64, 128, and 64 hidden units)[cite: 171].
+1. **Feature Extraction:** Standard 224x224x3 color image sequences are routed through a pre-trained **VGG16** network's fully connected (`fc1`) layer to derive a dense 4096-dimensional output vector.
+2. **Temporal Processing:** A sliding queue window of size 15 handles the historical steps, feeding stacked **LSTM layers** (structured with 64, 128, and 64 hidden units).
 3. *Continuous Regression Output:** Predicts 3 continuous degrees of freedom representing the precise state ($x$, $y$, and $yaw$).
 
 The network executes tracking monitoring using linear activations, optimizing via the Adam optimizer against a Mean Squared Error (MSE) loss standard.
@@ -70,7 +70,7 @@ Experimental hardware and simulation data confirms substantial tracking accuracy
 
 ### Prerequisites
 * **OS:** Ubuntu 24.04 or 26.04 LTS
-* **Middleware:** ROS2 (Foxy or Humble setup desktop complete distribution)
+* **Middleware:** ROS2 (Humble setup desktop complete distribution)
 **Simulation:** Gazebo Physics Engine 
 * **Python Dependencies:**
   ```bash
@@ -127,16 +127,3 @@ source install/setup.bash
 ros2 run cnn_lstm_localization main.py
 ```
 
----
-
-## Citation
-If this hybrid architecture or dataset generation logic assists your academic research, please cite our underlying project work:
-
-```bibtex
-@article{giri2024particle,
-  title={Particle Filter Enhanced by CNN-LSTM For Localization of Autonomous Robot in Indoor Environment},
-  author={Giri, Rabin and Sah, Anand Kumar and Satyal, Sanjivan},
-  journal={Department of Electronics and Computer, Pulchowk Campus},
-  year={2024}
-}
-```
